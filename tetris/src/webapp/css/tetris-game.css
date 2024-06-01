@@ -1,0 +1,15 @@
+tetrismavn
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── tetris
+│   │   │               ├── Tetris.java
+│   │   │               ├── Board.java
+│   │   │               └── Piece.java
+│   │   └── webapp
+│   │       ├── WEB-INF
+│   │       │   └── web.xml
+│   │       └── index.jsp
+└── pom.xml
