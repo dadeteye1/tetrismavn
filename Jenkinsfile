@@ -9,41 +9,19 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir('tetris') {
-                    sh 'mvn clean package'
-                }
+                sh 'tetris && mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                dir('tetris') {
-                    sh 'mvn test'
-                }
+                sh 'cd tetris mvn test'
             }
         }
         stage('Deploy to Tomcat') {
             steps {
-                script {
-                    def tomcatUrl = 'http://3.141.19.143:8080/manager/text'
-                    def warFile = 'tetris/target/tetris-game-1.0-SNAPSHOT.war'
-                    def contextPath = '/tetris'
-                    
-                    withCredentials([usernamePassword(credentialsId: 'tomcat9', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh """
-                            curl -u ${USERNAME}:${PASSWORD} --upload-file ${warFile} ${tomcatUrl}/deploy?path=${contextPath}&update=true
-                        """
-                    }
-                }
+                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.141.19.143:8080/')], contextPath: '/app', war: '**/*.war'
             }
         }
     }
-    
-    post {
-        success {
-            echo 'Build, test, and deployment successful'
-        }
-        failure {
-            echo 'Build, test, or deployment failed'
-        }
-    }
 }
+
