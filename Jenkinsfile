@@ -9,24 +9,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cd tetris-game-master && mvn clean package'
-            }
-        }
-        stage('Archive Artifacts') {
-            steps {
-                archiveArtifacts artifacts: '**/target/*.war', allowEmptyArchive: false
+                sh 'cd tetris && mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'cd tetris-game-master && mvn test'
+                sh 'cd tetris && mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://3.141.19.143:8080/')], 
-                       contextPath: '/webapp', 
-                       war: '**/target/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://18.188.105.217:8080//')], contextPath: '/webapp', war: '**/*.war'
             }
         }
     }
