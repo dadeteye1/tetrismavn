@@ -3,6 +3,7 @@
 <head>
     <title>Tetris Game</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tetris-game.css">
 </head>
 <body>
     <h1>Tetris Game</h1>
