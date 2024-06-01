@@ -9,6 +9,9 @@ tetrismavn
 │   │   │               ├── Board.java
 │   │   │               └── Piece.java
 │   │   └── webapp
+│   │       ├── css
+│   │       │   ├── style.css
+│   │       │   └── tetris-game.css
 │   │       ├── WEB-INF
 │   │       │   └── web.xml
 │   │       └── index.jsp
