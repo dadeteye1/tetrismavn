@@ -19,7 +19,7 @@ public class Tetris extends HttpServlet {
     public void init() throws ServletException {
         board = new Board(10, 20); // Standard Tetris board size
         mapper = new ObjectMapper();
-        
+
         // Example of placing a piece
         Piece piece = new Piece(0); // I piece
         if (board.canMove(piece, 3, 0)) {
