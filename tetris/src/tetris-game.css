@@ -6,6 +6,8 @@ tetrismavn
 │   │   │       └── example
 │   │   │           └── tetris
 │   │   │               ├── Tetris.java
+│   │   │               ├── Board.java
+│   │   │               └── Piece.java
 │   │   └── webapp
 │   │       ├── WEB-INF
 │   │       │   └── web.xml
