@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    def tomcatUrl = 'http://18.188.105.217:8080/manager/text'
+                    def tomcatUrl = 'http://3.141.19.143:8080/manager/text'
                     def warFile = 'tetris/target/tetris-game-1.0-SNAPSHOT.war'
                     def contextPath = '/tetris'
                     
