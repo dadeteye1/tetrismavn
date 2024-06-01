@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'tetris && mvn clean package'
+                sh 'cd tetris && mvn clean package'
             }
         }
         stage('Test') {
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy to Tomcat') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.141.19.143:8080/')], contextPath: '/app', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://3.141.19.143:8080/')], contextPath: '/app', war: '**/*.war'
             }
         }
     }
