@@ -33,6 +33,6 @@ public class Piece {
                 rotatedShape[i][j] = shape[n - j - 1][i];
             }
         }
-        return new Piece(id, rotatedShape);
+        return new Piece(id); // Fix this to match the constructor
     }
 }
