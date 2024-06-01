@@ -1,4 +1,4 @@
-tetris-game
+tetrismavn
 ├── src
 │   ├── main
 │   │   ├── java
@@ -6,9 +6,6 @@ tetris-game
 │   │   │       └── example
 │   │   │           └── tetris
 │   │   │               ├── Tetris.java
-│   │   │               ├── Board.java
-│   │   │               ├── Piece.java
-│   │   │               └── ... (other game classes)
 │   │   └── webapp
 │   │       ├── WEB-INF
 │   │       │   └── web.xml
