@@ -10,38 +10,38 @@
   <packaging>jar</packaging>
 
   <build>
-     <plugins>
-       <plugin>
+    <plugins>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
         <configuration>
           <archive>
             <manifest>
-            <mainClass>tetris.Main</mainClass>
+              <mainClass>tetris.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
       </plugin>
-  <plugin>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-dependency-plugin</artifactId>
-  <version>2.5.1</version>
-  <executions>
-    <execution>
-      <id>copy-dependencies</id>
-      <phase>package</phase>
-      <goals>
-          <goal>copy-dependencies</goal>
-      </goals>
-      <configuration>
-            <outputDirectory>
-              ${project.build.directory}/dependencies
-            </outputDirectory>
-      </configuration>
-    </execution>
-  </executions>
-  </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.5.1</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/dependencies
+              </outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -103,12 +103,19 @@
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.6.201602180812</version>
+            <version>0.8.8</version>
             <executions>
               <execution>
                 <id>prepare-agent</id>
                 <goals>
                   <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>report</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>report</goal>
                 </goals>
               </execution>
             </executions>
