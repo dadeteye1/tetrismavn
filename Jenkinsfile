@@ -24,8 +24,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://3.141.19.143:8080//')], 
-                       contextPath: '/tetris', 
+                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://3.141.19.143:8080/')], 
+                       contextPath: '/webapp', 
                        war: '**/target/*.war'
             }
         }
