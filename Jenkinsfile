@@ -9,18 +9,31 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cd tetris && mvn clean package'
+                dir('tetris') {
+                    sh 'mvn clean package'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'cd tetris && mvn test'
+                dir('tetris') {
+                    sh 'mvn test'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://18.188.105.217:8080//')], contextPath: '/app', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://18.188.105.217:8080')], contextPath: '/app', war: '**/target/*.war'
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Build, test, and deployment successful'
+        }
+        failure {
+            echo 'Build, test, or deployment failed'
         }
     }
 }
