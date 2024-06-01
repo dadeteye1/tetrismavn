@@ -1,0 +1,16 @@
+tetris-game
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── tetris
+│   │   │               ├── Tetris.java
+│   │   │               ├── Board.java
+│   │   │               ├── Piece.java
+│   │   │               └── ... (other game classes)
+│   │   └── webapp
+│   │       ├── WEB-INF
+│   │       │   └── web.xml
+│   │       └── index.jsp
+└── pom.xml
