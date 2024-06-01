@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cd tetris-master-game && mvn clean package'
+                sh 'cd tetris-game-master && mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'cd tetris-master-game && mvn test'
+                sh 'cd tetris-game-master && mvn test'
             }
         }
         stage('Deploy to Tomcat') {
