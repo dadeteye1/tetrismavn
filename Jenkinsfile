@@ -21,9 +21,19 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy to Tomcat') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://18.188.105.217:8080')], contextPath: '/tetris', war: '**/target/*.war'
+                script {
+                    def tomcatUrl = 'http://18.188.105.217:8080/manager/text'
+                    def warFile = 'tetris/target/tetris-game-1.0-SNAPSHOT.war'
+                    def contextPath = '/tetris'
+                    
+                    withCredentials([usernamePassword(credentialsId: 'tomcat9', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh """
+                            curl -u ${USERNAME}:${PASSWORD} --upload-file ${warFile} ${tomcatUrl}/deploy?path=${contextPath}&update=true
+                        """
+                    }
+                }
             }
         }
     }
